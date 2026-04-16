@@ -58,28 +58,30 @@ const hourlyTimeLabels = [
   };
 
   function getColorFromPercentage(percent) {
+    // Classic dashboard green: white → soft green, 0% to 30%
     const clamped = Math.max(0, Math.min(percent, 30)) / 30;
-  
-    const white = { r: 255, g: 255, b: 255 };    // White
-    const green = { r: 151, g: 222, b: 167 }; // #89cc98
-  
+
+    const white = { r: 255, g: 255, b: 255 };
+    const green = { r: 163, g: 222, b: 192 }; // #a3dec0 soft dashboard green
+
     const r = Math.round(white.r + (green.r - white.r) * clamped);
     const g = Math.round(white.g + (green.g - white.g) * clamped);
     const b = Math.round(white.b + (green.b - white.b) * clamped);
-  
+
     return `rgb(${r}, ${g}, ${b})`;
   }
 
   function getSBSColorFromPercentage(percent) {
+    // Classic dashboard amber: white → soft amber, 0% to 30%
     const clamped = Math.max(0, Math.min(percent, 30)) / 30;
-  
-    const white = { r: 255, g: 255, b: 255 };    // White
-    const green = { r: 242, g: 217, b: 114 };      // #ffcc00
-  
-    const r = Math.round(white.r + (green.r - white.r) * clamped);
-    const g = Math.round(white.g + (green.g - white.g) * clamped);
-    const b = Math.round(white.b + (green.b - white.b) * clamped);
-  
+
+    const white = { r: 255, g: 255, b: 255 };
+    const amber = { r: 250, g: 220, b: 140 }; // #fadc8c soft dashboard amber
+
+    const r = Math.round(white.r + (amber.r - white.r) * clamped);
+    const g = Math.round(white.g + (amber.g - white.g) * clamped);
+    const b = Math.round(white.b + (amber.b - white.b) * clamped);
+
     return `rgb(${r}, ${g}, ${b})`;
   }
 
@@ -412,12 +414,12 @@ const hourlyTimeLabels = [
       traces.push({
           x: hourlyTimeLabels, y: leftData, name: getAxisLabel(currentLeftYAxisKey),
           type: 'scatter', mode: 'lines+markers',
-          line: { color: '#007aff', width: 2 }, marker: { size: 5 }
+          line: { color: '#5b7cfa', width: 2 }, marker: { size: 5 } /* Dashboard blue */
       });
       traces.push({
           x: hourlyTimeLabels, y: rightData, name: getAxisLabel(currentRightYAxisKey),
           yaxis: 'y2', type: 'scatter', mode: 'lines+markers',
-          line: { color: getComputedStyle(document.documentElement).getPropertyValue('--accent-color').includes('gradient') ? '#30d158' : 'var(--accent-color)', width: 2 },
+          line: { color: '#2aa876', width: 2 }, /* Dashboard green */
            marker: { size: 5 }
       });
 
@@ -442,7 +444,7 @@ const hourlyTimeLabels = [
       const data = [{
           values: Object.values(sbsCausesData), labels: Object.keys(sbsCausesData),
           type: 'pie',
-          marker: { colors: ['#007aff', '#ff6b81','#5856d6', '#ffdd57', '#30d158' ] },
+          marker: { colors: ['#f2b742', '#2aa876', '#5b7cfa', '#e85a7a', '#8b79f0'] }, /* Classic amber / green / blue / red / purple */
           textinfo: "percent", textposition: "inside", insidetextorientation: 'horizontal', automargin: false,
           textfont: {size: 10, color: '#ffffff'}
       }];
@@ -538,7 +540,7 @@ const hourlyTimeLabels = [
               if (valueToDisplay <= 3) {
                 elementToUpdate.style.fill = 'rgb(87, 89, 87)';
               } else {
-                elementToUpdate.style.fill = isProductivity ? 'green' : 'rgb(110, 88, 1)';
+                elementToUpdate.style.fill = isProductivity ? '#1d7a54' : '#9e6b00'; /* Darkened green / amber for AA contrast on filled zones */
               }
               
               const pathElement = zoneEl.querySelector('path');
@@ -550,25 +552,22 @@ const hourlyTimeLabels = [
       });
 
       // Raw vs Translated toggle logic
-        const rawBtn = document.getElementById("toggle-raw");
-        const translatedBtn = document.getElementById("toggle-translated");
-        const rawData = document.getElementById("raw-data");
-        const translatedData = document.getElementById("translated-data");
+        /* Pill toggle: slide indicator + crossfade panes */
+        const pillTrack = document.querySelector('.toggle-pill-track');
+        const pillBtns  = document.querySelectorAll('.toggle-pill-btn');
+        const panes     = document.querySelectorAll('.toggle-pane');
 
-        if (rawBtn && translatedBtn && rawData && translatedData) {
-        rawBtn.addEventListener("click", () => {
-            rawData.style.display = "block";
-            translatedData.style.display = "none";
-            rawBtn.classList.add("active");
-            translatedBtn.classList.remove("active");
-        });
-
-        translatedBtn.addEventListener("click", () => {
-            rawData.style.display = "none";
-            translatedData.style.display = "block";
-            translatedBtn.classList.add("active");
-            rawBtn.classList.remove("active");
-        });
+        if (pillTrack && pillBtns.length && panes.length) {
+            pillBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = btn.dataset.index;
+                    pillBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    pillTrack.classList.toggle('right', idx === '1');
+                    panes.forEach(p => p.classList.remove('active'));
+                    panes[idx].classList.add('active');
+                });
+            });
         }
 
   }
@@ -782,17 +781,17 @@ const hourlyTimeLabels = [
       .data(nodes)
       .join("circle")
       .attr("r", width * 0.015)
-      .attr("fill", d => d.depth === 0 ? "#007aff" : d.children ? "#8884d8" : "#30d158")
+      .attr("fill", d => d.depth === 0 ? "#3a7fb8" : d.children ? "#7a89c2" : "#3ba88a")
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
       .call(drag(simulation))
       .on("mouseover", function (event, d) {
-        d3.select(this).attr("fill", "#ff9500");
+        d3.select(this).attr("fill", "#1ab2ff");
 
         link
           .filter(l => l.source === d || l.target === d)
           .attr("stroke-width", 3)
-          .attr("stroke", "#ff9500");
+          .attr("stroke", "#1ab2ff");
       })
       .on("mousemove", function (event, d) {
         link
@@ -801,7 +800,7 @@ const hourlyTimeLabels = [
           .attr("y2", l => l.target.y + (Math.random() * 8 - 4));
       })
       .on("mouseout", function (event, d) {
-        d3.select(this).attr("fill", d.children ? "#8884d8" : "#30d158");
+        d3.select(this).attr("fill", d.children ? "#7a89c2" : "#3ba88a");
 
         link
           .attr("stroke-width", 1.5)
@@ -850,7 +849,7 @@ if (
       y: costValues,
       type: "bar",
       marker: {
-        color: ['#007aff','#30d158','#ffdd57' ]
+        color: ['#3a7fb8', '#3ba88a', '#d9a040']
       },
       text: costValues.map(v => `$${v}B`),
       textposition: "outside"
@@ -891,14 +890,14 @@ if (
       y: cognitiveBaseline,
       mode: "markers",
       name: "Baseline Ventilation",
-      marker: { color: "#ff6b81", size: 8 }
+      marker: { color: "#c94371", size: 8 }
     };
     const traceEnhanced = {
       x: co2,
       y: cognitiveEnhanced,
       mode: "markers",
       name: "Enhanced Ventilation",
-      marker: { color: "#30d158", size: 8 }
+      marker: { color: "#3ba88a", size: 8 }
     };
   
     const layoutScatter = {
@@ -976,7 +975,7 @@ if (
       item.classList.remove('floor-pager-item');
       item.classList.add('floor-pager-active');
       if (clicked !== '1') {
-        console.log(`Floor ${clicked} selected — data not available in this prototype.`);
+        console.log(`Floor ${clicked} selected, data not available in this prototype.`);
       }
     });
   }
@@ -1002,6 +1001,14 @@ if (
       } else if (delta < -SCROLL_THRESHOLD) {
         header.classList.remove('is-hidden');    // scrolling up
       }
+
+      // Swap nav colour scheme once past the hero so it stays readable on light bg
+      if (currentY > 700) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+
       lastY = currentY;
       ticking = false;
     }

@@ -34,9 +34,10 @@
 
     <main>
         <section class="hero-section">
+            <div class="hero-background" aria-hidden="true"></div>
             <div class="container text-center">
-                <h1 class="hero-title">Transform Your Workspace with Intelligent Environmental Insights</h1>
-                <p class="hero-subtitle">Aura empowers you to understand and optimize your building's Indoor Environmental Quality (IEQ), boosting productivity and enhancing wellbeing for everyone.</p>
+                <h1 class="hero-title">Transform Your Workspace with Intelligent Environmental&nbsp;Insights</h1>
+                <p class="hero-subtitle">Aura empowers you to understand and optimise your building's Indoor Environmental Quality (IEQ), boosting productivity and enhancing wellbeing for&nbsp;everyone.</p>
                 <div class="hero-cta">
                     <a href="#demo" class="cta-button primary large">Explore the Live Demo</a>
                     <a href="#contact" class="cta-button secondary large">Get Started Free</a>
@@ -52,12 +53,12 @@
                     <div class="split-text">
                         <div class="section-header">
                             <span class="section-tag">The Problem</span>
-                            <h2>IEQ is Invisible, But Costly</h2>
+                            <h2>IEQ is Invisible, But&nbsp;Costly</h2>
                             <p>
                             Many assume air, temperature, light, and sound have little to do with how we perform at work.
-                            But these factors, when overlooked, quietly erode wellbeing and output — a phenomenon known as
-                            <strong>Sick Building Syndrome</strong> (SBS), symptoms like headaches, fatigue, and brain fog that 
-                            lead to absenteeism and cognitive loss.
+                            But these factors, when overlooked, quietly erode wellbeing and output, a phenomenon known as
+                            <strong>Sick Building Syndrome</strong> (SBS), symptoms like headaches, fatigue, and brain fog that
+                            lead to absenteeism and cognitive&nbsp;loss.
                             </p>
                         </div>
                     </div>
@@ -78,8 +79,8 @@
                     <div class="split-text">
                         <div class="section-header">
                             <span class="section-tag">The Hidden Cost</span>
-                            <h2>How Much Is Poor IEQ Really Costing You?</h2>
-                            <p>From productivity loss to avoidable sick days, IEQ has real economic impact.</p>
+                            <h2>How Much Is Poor IEQ Really Costing&nbsp;You?</h2>
+                            <p>From productivity loss to avoidable sick days, IEQ has real economic&nbsp;impact.</p>
                         </div>
                     </div>
             <!-- Right column: single card with toggle + two charts -->
@@ -92,15 +93,15 @@
                             </div>
                         <!-- Card 1: Real-World Impact (Savings) -->
                             <div id="card-savings" class="feature-card-non-hover card-visible">
-                                <h3>Real-World Impact</h3>
-                                <p>Improved indoor air quality could save the U.S. economy billions annually through reduced illness and enhanced cognitive function.</p>
+                                <h3>Real-World&nbsp;Impact</h3>
+                                <p>Improved indoor air quality could save the U.S. economy billions annually through reduced illness and enhanced cognitive&nbsp;function.</p>
                                 <div id="ieq-cost-chart"></div>
                             </div>
                         <!-- </div> -->
                         <!-- Card 2: Why It Matters (Cognitive) -->
                             <div id="card-cognitive" class="feature-card-non-hover card-hidden">
-                                <h3>Why It Matters</h3>
-                                <p>Higher cognitive performance means better focus, faster decision‐making, and fewer errors. Even a small percent gain can translate to huge productivity wins when scaled across a workforce.</p>
+                                <h3>Why It&nbsp;Matters</h3>
+                                <p>Higher cognitive performance means better focus, faster decision‐making, and fewer errors. Even a small percent gain can translate to huge productivity wins when scaled across a&nbsp;workforce.</p>
                                 <div id="cognitive-scatter"></div>
                             </div>
                         </div>
@@ -119,79 +120,80 @@
                     <div class="split-text">
                         <div class="section-header">
                             <span class="section-tag">Why Aura</span>
-                            <h2>From Overwhelming to Understandable</h2>
-                            <p>IEQ systems like SAMBA provide powerful data, but not everyone can read a CSV file. Aura makes this information easy to understand for technical and non-technical users alike.</p>
+                            <h2>From Overwhelming to&nbsp;Understandable</h2>
+                            <p>IEQ systems like SAMBA provide powerful data, but not everyone can read a CSV file. Aura makes this information easy to understand for technical and non-technical users&nbsp;alike.</p>
                         </div>
                     </div>    
                     <div class="toggle-container">
-                        <div class="toggle-buttons">
-                        <button id="toggle-raw" class="toggle-button active">Raw Sensor Data</button>
-                        <button id="toggle-translated" class="toggle-button">Aura Insights</button>
-                    </div>
-                    <div id="toggle-content" class="toggle-content">
-                        <pre id="raw-data">co2: 973 ppm
+                        <div class="toggle-pill-track">
+                            <span class="toggle-pill-indicator"></span>
+                            <button id="toggle-raw" class="toggle-pill-btn active" data-index="0">Raw Sensor Data</button>
+                            <button id="toggle-translated" class="toggle-pill-btn" data-index="1">Aura Insights</button>
+                        </div>
+                        <div class="toggle-content-stage">
+                            <div id="raw-data" class="toggle-pane active">
+                                <pre>co2: 973 ppm
 ta: 25.1°C
 lux: 238
 spl: 58 dB</pre>
-                      <div id="translated-data" style="display:none;">
-                        <p>🔻 Productivity: <strong>-6%</strong></p>
-                        <p>⚠️ SBS Risk: <strong>High</strong></p>
-                        <p>📍 Main Issues: <strong>Poor light and high noise levels</strong></p>
-                      </div>
+                            </div>
+                            <div id="translated-data" class="toggle-pane">
+                                <p>🔻 Productivity: <strong>-6%</strong></p>
+                                <p>⚠️ SBS Risk: <strong>High</strong></p>
+                                <p>📍 Main Issues: <strong>Poor light and high&nbsp;noise&nbsp;levels</strong></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
               </div>
-            </div>
           </section>
-          
 
         <section id="features" class="features-section">
             <div class="container">
-                 <div class="section-header">
-                    <span class="section-tag">The Aura Advantage</span>
-                    <h2>Unlock a Healthier, More Productive Environment</h2>
-                    <p>Aura provides clear, actionable insights from your existing IEQ sensors, making it easy to identify issues and implement targeted improvements.</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Visual Floorplan Heatmaps</h3>
-                        <p>Instantly identify high-performance zones and areas needing attention with dynamic heatmaps visualising productivity potential and Sick Building Syndrome (SBS) risk.</p>
+                <div class="features-panel">
+                    <div class="section-header">
+                        <span class="section-tag">The Aura Advantage</span>
+                        <h2>Unlock a Healthier, More Productive&nbsp;Environment</h2>
+                        <p>Aura provides clear, actionable insights from your existing IEQ sensors, making it easy to identify issues and implement targeted&nbsp;improvements.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📉</div>
-                        <h3>Detailed Zone Analytics</h3>
-                        <p>Dive deep into specific zones. Analyse hourly IEQ trends for any selected day, and understand their direct impact on performance metrics.</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <img class="feature-icon" src="icons/MapIcon.svg" alt="" aria-hidden="true">
+                            <h3>Visual Floorplan&nbsp;Heatmaps</h3>
+                            <p>Instantly identify high-performance zones and areas needing attention with dynamic heatmaps visualising productivity potential and Sick Building Syndrome (SBS)&nbsp;risk.</p>
+                        </div>
+                        <div class="feature-card">
+                            <img class="feature-icon" src="icons/AnalyticsIcon.svg" alt="" aria-hidden="true">
+                            <h3>Detailed Zone&nbsp;Analytics</h3>
+                            <p>Dive deep into specific zones. Analyse hourly IEQ trends for any selected day, and understand their direct impact on performance&nbsp;metrics.</p>
+                        </div>
+                        <div class="feature-card">
+                            <img class="feature-icon" src="icons/DailyTrendIcon.svg" alt="" aria-hidden="true">
+                            <h3>Daily Trend&nbsp;Analysis</h3>
+                            <p>Utilise the interactive date slider to select a specific day and explore how environmental conditions changed hour-by-hour, uncovering patterns for&nbsp;optimisation.</p>
+                        </div>
+                         <div class="feature-card">
+                            <img class="feature-icon" src="icons/RiskBreakdownIcon.svg" alt="" aria-hidden="true">
+                            <h3>Risk Breakdowns&nbsp;Visuals</h3>
+                            <p>Clearly understand the main contributors to SBS risk (e.g., CO₂ vs. lighting) with intuitive charts, enabling focused and effective&nbsp;interventions.</p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📅</div>
-                        <h3>Daily Trend Analysis</h3>
-                        <p>Utilise the interactive date slider to select a specific day and explore how environmental conditions changed hour-by-hour, uncovering patterns for optimisation.</p>
-                    </div>
-                     <div class="feature-card">
-                        <div class="feature-icon">💡</div>
-                        <h3>Risk Breakdowns Visuals</h3>
-                        <p>Clearly understand the main contributors to SBS risk (e.g., CO₂ vs. lighting) with intuitive charts, enabling focused and effective interventions.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section id="demo" class="demo-section">
-            <div class="container">
-                 <div class="section-header">
-                    <span class="section-tag">Experience Aura</span>
-                    <h2>See Your Building Data Come to Life</h2>
-                    <p>Interact with our live demo below. Click on different zones in the floorplan to see detailed stats and graphs.</p>
-                </div>
-                <div class="dashboard-container-embed">
+                    <!-- Live demo, inside the same teal panel -->
+                    <div id="demo" class="demo-block">
+                        <div class="section-header">
+                            <span class="section-tag">Experience Aura</span>
+                            <h2>See Your Building Data Come to&nbsp;Life</h2>
+                            <p>Interact with our live demo below. Click on different zones in the floorplan to see detailed stats and&nbsp;graphs.</p>
+                        </div>
+                        <div class="dashboard-outer-shell">
+                        <div class="dashboard-container-embed">
                     <div class="content-wrapper">
                         <div class="floorplan-area">
                             <div class="floorplan-header-controls">
                                 <div>
-                                    <h3 class="floorplan-header">Floor Insights</h3>
-                                    <p class="floorplan-subtitle">Track building performance by floor and its impact on resident health and productivity.</p>
+                                    <h3 class="floorplan-header">Floor&nbsp;Insights</h3>
+                                    <p class="floorplan-subtitle">Track building performance by floor and its impact on resident health and&nbsp;productivity.</p>
                                 </div>
                             </div>
                             <div class="summary-stats-bar">
@@ -365,28 +367,31 @@ spl: 58 dB</pre>
                         </div>
                         </div>
                         </div>
-                </div>
-            </div>
-        </section>
+                        </div><!-- /.dashboard-container-embed -->
+                        </div><!-- /.dashboard-outer-shell -->
+                    </div><!-- /.demo-block -->
+                </div><!-- /.features-panel -->
+            </div><!-- /.container -->
+        </section><!-- /.features-section -->
 
         <section id="why-aura" class="content-section">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Empower Your People</span>
-                    <h2>Why Choose Aura for Your Building?</h2>
+                    <h2>Why Choose Aura for Your&nbsp;Building?</h2>
                 </div>
                 <div class="why-aura-grid">
                     <div class="why-aura-item">
-                        <h5>For Office Workers:</h5>
-                        <p>Gain transparency into how your workspace affects your daily health and focus. Aura helps you understand your environment, enabling you to advocate for better conditions and find optimal work zones.</p>
+                        <h5>For Office&nbsp;Workers:</h5>
+                        <p>Gain transparency into how your workspace affects your daily health and focus. Aura helps you understand your environment, enabling you to advocate for better conditions and find optimal work&nbsp;zones.</p>
                     </div>
                     <div class="why-aura-item">
-                        <h5>For Building Managers:</h5>
-                        <p>Move beyond reactive maintenance. Proactively identify underperforming zones, justify investments in IEQ improvements with clear data, and demonstrate commitment to occupant wellbeing and operational efficiency.</p>
+                        <h5>For Building&nbsp;Managers:</h5>
+                        <p>Move beyond reactive maintenance. Proactively identify underperforming zones, justify investments in IEQ improvements with clear data, and demonstrate commitment to occupant wellbeing and operational&nbsp;efficiency.</p>
                     </div>
                      <div class="why-aura-item">
-                        <h5>For Employers:</h5>
-                        <p>Invest in your most valuable asset - your people. By optimising IEQ, you can reduce sick days, boost employee morale and retention, and unlock significant productivity gains across your organisation.</p>
+                        <h5>For&nbsp;Employers:</h5>
+                        <p>Invest in your most valuable asset, your people. By optimising IEQ, you can reduce sick days, boost employee morale and retention, and unlock significant productivity gains across your&nbsp;organisation.</p>
                     </div>
                 </div>
             </div>
@@ -394,10 +399,11 @@ spl: 58 dB</pre>
 
 
         <section id="contact" class="cta-final-section">
+            <div class="cta-final-background" aria-hidden="true"></div>
             <div class="container text-center">
-                <h2>Ready to Create a Smarter, Healthier Workplace?</h2>
-                <p>Discover how Aura can revolutionise your building's performance. Schedule a personalised demo today and receive a complimentary IEQ snapshot analysis for your facility.</p>
-                <a href="#" class="cta-button primary large">Book Your Personalised Demo</a>
+                <h2>Ready to Create a Smarter, Healthier&nbsp;Workplace?</h2>
+                <p>Discover how Aura can revolutionise your building's performance. Schedule a personalised demo today and receive a complimentary IEQ snapshot analysis for your&nbsp;facility.</p>
+                <a href="#" class="cta-button primary large">Book Your Personalised&nbsp;Demo</a>
             </div>
         </section>
     </main>
